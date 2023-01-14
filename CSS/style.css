@@ -1,0 +1,78 @@
+.active {
+  border: 3px solid #0D0D0D;
+  transition: all 0.5s 0s ease;
+}
+
+body {
+  background-color: #A3A653;
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+.container .sel {
+  display: flex;
+  align-items: center;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.container .sel p {
+  padding-right: 5px;
+  font-size: 20px;
+}
+.container .sel div {
+  font-size: 20px;
+  background-color: red;
+}
+.container .todo-record-wrapper {
+  margin: 2px;
+  background-color: #F2EB88;
+  display: flex;
+  justify-content: space-around;
+}
+.container .todo-record-wrapper:hover {
+  background-color: #35F29A;
+  transition: all 0.5s 0s ease;
+  opacity: 0.8;
+}
+.container .todo-record-wrapper .list-data-id {
+  width: 100px;
+}
+.container .todo-record-wrapper .list-data-name {
+  width: 250px;
+}
+.container .todo-record-wrapper .list-data-name p {
+  max-width: 250px;
+}
+.container .todo-record-wrapper .list-data-status {
+  width: 150px;
+}
+.container .todo-record-wrapper .del-button {
+  background-color: #0a0a23;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 30px;
+  min-width: 120px;
+}
+.container .todo-record-wrapper .del-button:hover {
+  background-color: red;
+}
+.container .return {
+  background-color: #0a0a23;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 30px;
+  min-width: 120px;
+  margin: 20px 0 20px 450px;
+}
+.container .return:hover {
+  background-color: red;
+}
+
+/*# sourceMappingURL=style.css.map */
