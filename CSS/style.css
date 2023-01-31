@@ -74,5 +74,26 @@ body {
 .container .return:hover {
   background-color: red;
 }
+.container .pages {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.container .pages .counter {
+  font-size: 30px;
+  color: #0a0a23;
+}
+.container .pages .arr {
+  background-color: #0a0a23;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+}
+.container .pages .arr:hover {
+  background-color: red;
+}
 
 /*# sourceMappingURL=style.css.map */
