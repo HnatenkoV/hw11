@@ -204,18 +204,21 @@ body{
         background-color: #A3A653;
         color: black;
         max-width: 800px;
-        padding: 30px;
+        padding: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
 
         h2 {
           font-size: 40px;
-          margin-bottom: 1em;
+          margin-top: 5px;
+          margin-bottom: 5px;
         }
 
         h3 {
           font-size: 40px;
+          margin-top: 5px;
+          margin-bottom: 5px;
         }
 
         img {
