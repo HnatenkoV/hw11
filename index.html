@@ -10,22 +10,57 @@
     <link rel="stylesheet" href="CSS/style.css">
 
 </head>
-<body>
+<body id="outsideClick">
+
 <div class="container">
+    <div class="search-section">
+        <label for="site-search"></label>
+        <input type="search" id="site-search" name="q" placeholder="select name">
+        <div class="radio-section">
+            <input class="custom-radio" type="radio" id="statusChoice1"
+                   name="status" value="Alive">
+            <label for="statusChoice1">Alive</label>
+
+            <input class="custom-radio" type="radio" id="statusChoice2"
+                   name="status" value="Dead">
+            <label for="statusChoice2">Dead</label>
+
+            <input  class="custom-radio" type="radio" id="statusChoice3"
+                   name="status" value="Unknown">
+            <label for="statusChoice3">Unknown</label>
+        </div>
+        <button id="searchBtn" class="search-btn">Search</button>
+    </div>
     <div class="sel">
         <p>Selected: </p>
         <div id="selectDiv"></div>
     </div>
 
-    <div class="todo-wrapper" id="todo-list-wrapper"></div>
 
-<!--    <button class="return" onclick="handledReturnClick(event)">return</button>-->
     <div class="pages">
         <button id ="arr-left" class="arr"><</button>
         <div id="cnt" class="counter">1</div>
         <button id ="arr-right" class="arr">></button>
     </div>
+
+    <div class="todo-wrapper" id="todo-list-wrapper"></div>
+
+<!--    <button class="return" onclick="handledReturnClick(event)">return</button>-->
+
+    <section id="charWind" class="character-window">
+        <div class="window-body">
+            <div id="modalContent" class="window-content">
+                <h2 id="personApiInfo"></h2>
+                <img id="personApiImg" src="" alt="">
+                <h3 id="personApiName"></h3>
+                <button id="closeBtn">close</button>
+            </div>
+        </div>
+    </section>
+
 </div>
+
+
 
 
 </body>

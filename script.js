@@ -4,9 +4,16 @@ const toDoData = document.getElementsByClassName('todo-wrapper');
 const arrLeft = document.getElementById('arr-left');
 const arrRight = document.getElementById('arr-right');
 const count = document.getElementById('cnt');
+const searchBtn = document.getElementById('searchBtn');
+const cWind = document.getElementById('charWind');
+const personApiInfo = document.getElementById('personApiInfo');
+const personApiImg = document.getElementById('personApiImg');
+const personApiName = document.getElementById('personApiName');
+const modalContent = document.getElementById('modalContent');
+const checkRadio = document.getElementsByClassName('.custom-radio')
 
 let currentPage = 1;
-let urlPage = `https://rickandmortyapi.com/api/character?page=${currentPage}`;
+// let urlPage = `https://rickandmortyapi.com/api/character?page=${currentPage}`;
 
 let page = 1;
 
@@ -17,19 +24,23 @@ async function getCharacters(urlPage) {
 
        data.results.map((element) => {
             todoList.innerHTML += `<section onclick="handlerListClick(event)" class = "todo-record-wrapper">
-        <div class = "list-data-id"><p>"id": ${element.id}</p></div>
-        <div class = "list-data-name"><p class ="name-person">"name": ${element.name}</p></div>
-        <div class = "list-data-status"><p>"status" :${element.status}</p></div>
+        <div class = "list-data-id"><p>${element.id}</p></div>
+        <div style="display: none"><img class="img-person" src="${element.image}" alt=""></div>
+        <div style="display: none"><p class="species-person">${element.species}</p></div>
+        <div class = "list-data-name"><p class ="name-person">${element.name}</p></div>
+        <div class = "list-data-status"><p>${element.status}</p></div>
         <button class = "del-button" btn-name = "delete">Delete</button>
          </section>`;
          });
     // count.innerHTML = currentPage;
 }
 
-getCharacters(urlPage);
+getCharacters(`https://rickandmortyapi.com/api/character?page=${currentPage}`);
+
 
 arrRight.addEventListener("click", () => {
     todoList.innerHTML = '';
+
     if (currentPage < 42) {
         currentPage++;
     }
@@ -53,6 +64,13 @@ arrLeft.addEventListener("click", () => {
     count.innerHTML = page;
 });
 
+searchBtn.addEventListener("click", () => {
+    todoList.innerHTML = '';
+    let personName = document.getElementById('site-search').value;
+    let personStatus = document.querySelector('input[name="status"]:checked').value;
+    console.log(personStatus)
+    getCharacters(`https://rickandmortyapi.com/api/character/?name=${personName}&status=${personStatus}`);
+});
 
 const actionList = {
     delete: (element) => {
@@ -60,11 +78,11 @@ const actionList = {
     },
 }
 
-
 function handlerListClick(event) {
     const currentRecord = event.target;
     const action = event.target.getAttribute('btn-name');
-    const personName = event.target.querySelectorAll("section div p.name-person")
+
+
     console.log(event)
 
     if (action in actionList) {
@@ -72,18 +90,51 @@ function handlerListClick(event) {
     }
 
     const menuItem = document.querySelectorAll('.todo-record-wrapper');
-
     menuItem.forEach(item => {
-        item.addEventListener('click', (e) => {
+        item.addEventListener('click', (event) => {
             menuItem.forEach(el => {
                 el.classList.remove('active');
+
             });
             item.classList.add('active')
 
             selectDiv.textContent = item.querySelectorAll("section div p.name-person")[0].textContent;
+
+
+            openWindow(event);
+            personApiInfo.textContent = item.querySelectorAll("section div p.species-person")[0].textContent;
+            personApiImg.src = item.querySelectorAll("section div img.img-person")[0].src;
+            personApiName.textContent = item.querySelectorAll("section div p.name-person")[0].textContent;
         })
     })
 }
+
+function openWindow(event) {
+    event.stopPropagation();
+    cWind.style.display = 'block';
+}
+
+function closeWindow() {
+    cWind.style.display = 'none';
+}
+
+modalContent.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
+
+const closeBtn = document.getElementById('closeBtn');
+
+closeBtn.addEventListener('click', (event) => {
+    closeWindow(event);
+})
+
+const outsideSpace = document.getElementsByTagName('body');
+console.log(outsideSpace);
+
+outsideSpace[0].addEventListener('click', closeWindow)
+
+
+
 
 
 function handledReturnClick(event) {
