@@ -22,8 +22,8 @@ async function getCharacters(urlPage) {
     const data = await response.json();
     console.log(data);
 
-       data.results.map((element) => {
-            todoList.innerHTML += `<section onclick="handlerListClick(event)" class = "todo-record-wrapper">
+    data.results.map((element) => {
+        todoList.innerHTML += `<section onclick="handlerListClick()" class = "todo-record-wrapper">
         <div class = "list-data-id"><p>${element.id}</p></div>
         <div style="display: none"><img class="img-person" src="${element.image}" alt=""></div>
         <div style="display: none"><p class="species-person">${element.species}</p></div>
@@ -31,7 +31,7 @@ async function getCharacters(urlPage) {
         <div class = "list-data-status"><p>${element.status}</p></div>
         <button class = "del-button" btn-name = "delete">Delete</button>
          </section>`;
-         });
+    });
     // count.innerHTML = currentPage;
 }
 
@@ -158,5 +158,3 @@ function handledReturnClick(event) {
         </section>`;
     });
 }
-
-
