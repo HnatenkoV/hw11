@@ -23,7 +23,7 @@ async function getCharacters(urlPage) {
     console.log(data);
 
     data.results.map((element) => {
-        todoList.innerHTML += `<section onclick="handlerListClick()" class = "todo-record-wrapper">
+        todoList.innerHTML += `<section id="todoRec" class = "todo-record-wrapper">
         <div class = "list-data-id"><p>${element.id}</p></div>
         <div style="display: none"><img class="img-person" src="${element.image}" alt=""></div>
         <div style="display: none"><p class="species-person">${element.species}</p></div>
@@ -78,12 +78,13 @@ const actionList = {
     },
 }
 
-function handlerListClick(event) {
-    const currentRecord = event.target;
-    const action = event.target.getAttribute('btn-name');
+
+document.getElementById("todo-list-wrapper").addEventListener("click", (e) => {
+    const currentRecord = e.target;
+    const action = e.target.getAttribute('btn-name');
 
 
-    console.log(event)
+    console.log(e)
 
     if (action in actionList) {
         actionList[action](currentRecord.parentElement);
@@ -107,7 +108,9 @@ function handlerListClick(event) {
             personApiName.textContent = item.querySelectorAll("section div p.name-person")[0].textContent;
         })
     })
-}
+});
+
+
 
 function openWindow(event) {
     event.stopPropagation();
